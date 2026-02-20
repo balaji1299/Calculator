@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  addition:
+    build: ./addition-service
+    ports:
+      - "5001:5001"
+
+  subtraction:
+    build: ./subtraction-service
+    ports:
+      - "5002:5002"
+
+  multiplication:
+    build: ./multiplication-service
+    ports:
+      - "5003:5003"
+
+  division:
+    build: ./division-service
+    ports:
+      - "5004:5004"
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
