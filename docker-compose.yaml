@@ -3,27 +3,35 @@ version: '3.9'
 services:
   addition:
     build: ./addition-service
+    container_name: addition
     ports:
       - "5001:5001"
 
   subtraction:
     build: ./subtraction-service
+    container_name: subtraction
     ports:
       - "5002:5002"
 
   multiplication:
     build: ./multiplication-service
+    container_name: multiplication
     ports:
       - "5003:5003"
 
   division:
     build: ./division-service
+    container_name: division
     ports:
       - "5004:5004"
 
   frontend:
-    image: nginx:alpine
+    build: ./frontend
+    container_name: calculator-frontend
     ports:
-      - "8080:80"
-    volumes:
-      - ./frontend:/usr/share/nginx/html
+      - "80:80"
+    depends_on:
+      - addition
+      - subtraction
+      - multiplication
+      - division
