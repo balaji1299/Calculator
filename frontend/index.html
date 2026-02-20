@@ -23,12 +23,12 @@ async function calculate(operation) {
     const a = parseFloat(document.getElementById("num1").value);
     const b = parseFloat(document.getElementById("num2").value);
 
-    const urls = {
-        add: "http://localhost:5001/calculate",
-        subtract: "http://localhost:5002/calculate",
-        multiply: "http://localhost:5003/calculate",
-        divide: "http://localhost:5004/calculate"
-    };
+   const urls = {
+    add: "/add",
+    subtract: "/subtract",
+    multiply: "/multiply",
+    divide: "/divide"
+};
 
     const response = await fetch(urls[operation], {
         method: "POST",
